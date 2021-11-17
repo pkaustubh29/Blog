@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create email: 'kaustubh84840@gmail.com', password: 'password'
+Admin.create email: 'admin@example.com', password: 'test@password'
 50.times do
     Post.create(
         id:Faker::Config.random =Random.new(30)
