@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Admin.create email: 'kaustubh84840@gmail.com', password: 'password'
+50.times do
+    Post.create(
+        id:Faker::Config.random =Random.new(30)
+        created_at:Faker::Date.between(from: '2021-09-23', to: '2021-10-25')  
+    )
+end

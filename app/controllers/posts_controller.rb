@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
- 
+  before_action :authenticate_admin!
+
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+      # respond_to do |format|
+      #   format.html
+      #   #format.xml { send_data @posts.xml, content_type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', filename: 'posts.xml' }
+      # end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -22,7 +27,8 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-
+    update_hash ={}
+    update_hash.merge(id: Post.title )
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: "Post was successfully created." }

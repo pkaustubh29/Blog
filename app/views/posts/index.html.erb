@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
+
+<div style="width: 500px">
+<%= pie_chart Post.group_by_week(:created_at).count %>
+</div>
+
 <table>
   <thead>
     <tr>
@@ -18,10 +23,11 @@
         <td><%= post.id %></td>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td><%= post.created_at.strftime("%d %m %Y, %l:%M%P")%>
+        <td><%= post.created_at&.strftime("%d %m %Y, %l:%M%P")%>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
       </tr>
     <% end %>
   </tbody>
